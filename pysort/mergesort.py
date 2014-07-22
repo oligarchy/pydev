@@ -2,7 +2,6 @@ import sys
 
 def Sort(inputList):
 	# public function
-	# print 'You have ' + repr(len(inputList)) + ' items to sort.'
 
 	# Our base case.  A list of 1 or less is considered sorted.
 	if len(inputList) <= 1 :
@@ -11,7 +10,6 @@ def Sort(inputList):
 	# Find the mid point in the list, using int() to round in this case
 	# although there is probably a better way.
 	mid = int(round(len(inputList) / 2))
-	# print 'Mid is: ' + repr(mid)
  
  	# Initialize our split lists
 	left = []
@@ -55,7 +53,6 @@ def __merge(a, b):
 		elif len(b) > 0 :
 			merged.append(b[0])
 			b = __rest(b)
-		# print 'len(a): ' + repr(len(a)) + ' len(b)' + repr(len(b))
 
 	return merged
 
