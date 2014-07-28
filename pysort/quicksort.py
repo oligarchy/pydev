@@ -3,40 +3,48 @@ import sys
 class QuickSort :
 	"I wanted to do a simple test of making a class"
 
-	toSort = []
-
-	def __init__(self, inputList) :
-		toSort = inputList
-
 	def Sort(self, inputList, start, end) :
 		if len(inputList) <= 1 :
 			return inputList
 
-		self.toSort = inputList
-		sortedList = []
-
 		if start < end :
-			partition = self.__partition(inputList, start, end)
-			sortedList = self.Sort(inputList, start, partition - 1)
-			sortedList = self.Sort(inputList, partition + 1, end)
+			pivot = self.__partition(inputList, start, end)
+			self.Sort(inputList, start, pivot - 1)
+			self.Sort(inputList, pivot + 1, end)
 
-		return sortedList
+		return inputList
 
 	def __partition(self, inputList, start, end) :
-		pivotIndex = self.__choosePivot(inputList, start, end - 1)
+		pivotIndex = inputList[start]
 		pivotValue = inputList[pivotIndex]
 
-		inputList = self.__swap(inputList, pivotIndex, end - 1)
-		
-		for i in range(start, end - 1) :
-			if inputList[i] <= pivotValue :
-				inputList = self.__swap(inputList, i, pivotIndex)
-				start = start + 1
+		left = start + 1
+		right = end
+		done = False
 
-		return pivotIndex
+		while not done :
+			while left <= right and inputList[left] <= pivotValue :
+				left = left + 1
+			
+			while inputList[right] >= pivotValue and right >= left :
+				right = right - 1
+			
+			if right < left :
+				done = True
+			else :
+				temp = inputList[left]
+				inputList[left] = inputList[right]
+				inputList[right] = temp
+
+		temp = inputList[start]
+		inputList[start] = inputList[right]
+		inputList[right] = temp
+
+		return right
 
 	def __choosePivot(self, inputList, start, end) : 
-		return int(len(inputList) / 2)
+		#return int(len(inputList) / 2)
+		return inputList[start]
 
 	def __swap(self, inputList, a, b) :
 		print("Swap: " + repr(a) + ":" + repr(b))

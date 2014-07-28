@@ -7,15 +7,15 @@ sortedWords = []
 numbers = [3, 8, 11, 7, 4, 55, 22, 99]
 sortedNumbers = []
 
-qsortWords = quicksort.QuickSort(words)
-qsortNumbers = quicksort.QuickSort(numbers)
+qsortWords = quicksort.QuickSort()
+qsortNumbers = quicksort.QuickSort()
 
 print 'First we try to Quick sort numbers.'
-sortedNumbers = qsortNumbers.Sort(numbers, 0, len(numbers))
+sortedNumbers = qsortNumbers.Sort(numbers, 0, len(numbers) - 1)
 
 
 print 'Then we try to quick sort words'
-sortedWords = qsortWords.Sort(words, 0, len(words))
+sortedWords = qsortWords.Sort(words, 0, len(words) - 1)
 
 #print 'First we try to Merge sort numbers.'
 #sortedNumbers = mergesort.Sort(numbers)
