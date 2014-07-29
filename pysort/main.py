@@ -1,5 +1,6 @@
 import mergesort
 import quicksort
+import heap
 
 words = ['zebra', 'cat', 'banana', 'sultan', 'apple']
 sortedWords = []
