@@ -16,17 +16,16 @@ class QuickSort :
 
 	def __partition(self, inputList, start, end) :
 		pivotIndex = inputList[start]
-		pivotValue = inputList[pivotIndex]
-
+		
 		left = start + 1
 		right = end
 		done = False
 
 		while not done :
-			while left <= right and inputList[left] <= pivotValue :
+			while left <= right and inputList[left] <= pivotIndex :
 				left = left + 1
 			
-			while inputList[right] >= pivotValue and right >= left :
+			while inputList[right] >= pivotIndex and right >= left :
 				right = right - 1
 			
 			if right < left :
