@@ -40,16 +40,3 @@ class QuickSort :
 		inputList[right] = temp
 
 		return right
-
-	def __choosePivot(self, inputList, start, end) : 
-		#return int(len(inputList) / 2)
-		return inputList[start]
-
-	def __swap(self, inputList, a, b) :
-		print("Swap: " + repr(a) + ":" + repr(b))
-
-		leftValue = inputList[a]
-		inputList[a] = inputList[b]
-		inputList[b] = leftValue
-
-		return inputList
