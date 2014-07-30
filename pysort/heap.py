@@ -4,6 +4,15 @@
 
 __listInternal = []
 
+def Insert(item) :
+	__listInternal.append(item)
+
+def Delete(item) :
+	__listInternal.remove(item)
+
+def DeleteByIndex(index) :
+	__listInternal.pop(index)
+
 def Add(item, parentIndex) :
 	if len(__listInternal) == 0 :
 		# we are making a root element
