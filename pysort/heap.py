@@ -11,7 +11,7 @@ def Delete(item) :
 	__listInternal.remove(item)
 
 def DeleteByIndex(index) :
-	__listInternal.pop(index)
+	__listInternal.pop(index)l
 
 def Add(item, parentIndex) :
 	if len(__listInternal) == 0 :
