@@ -26,12 +26,6 @@ class LongLongTripDiv2 :
 			return "Impossible"
 
 	def Decide(self, D, T, B) :
-		#dm = divmod(D, B)
-		# print repr(dm[0]) + '/' + repr(dm[1])
-		# loop through number of moves
-		# add constant times current iteration
-		# add B times that difference.  number of moves - 1 current iteration
-
 		answer = False
 
 		for i in range(1, T) :
