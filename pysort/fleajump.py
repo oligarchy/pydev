@@ -32,34 +32,40 @@ class LongLongTripDiv2 :
 		# add constant times current iteration
 		# add B times that difference.  number of moves - 1 current iteration
 
+		answer = False
+
 		for i in range(1, T) :
+			prod = (B*i) + (i + T)
+
+			if prod == D :
+				answer = True
+				break
 			
-			
-		return True
+		return answer
 
 # test cases
 longTrip = LongLongTripDiv2()
 
 # possible
 result = longTrip.isAble(10, 6, 3)
-print(result)
+print("Expected: Possible  -  Actual: " + result)
 
 # impossible
 result = longTrip.isAble(10, 5, 3)
-print(result)
+print("Expected: Impossible  -  Actual: " + result)
 
 # impossible
 result = longTrip.isAble(50, 100, 2)
-print(result)
+print("Expected: Impossible  -  Actual: " + result)
 
 # possible
 result = longTrip.isAble(10, 10, 9999)
-print(result)
+print("Expected: Possible  -  Actual: " + result)
 
 # possible
 result = longTrip.isAble(1000, 100, 10)
-print(result)
+print("Expected: Possible  -  Actual: " + result)
 
 # possible
 result = longTrip.isAble(1000010000100001, 1100011, 1000000000)
-print(result)
+print("Expected: Possible  -  Actual: " + result)
