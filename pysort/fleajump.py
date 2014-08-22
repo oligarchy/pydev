@@ -28,8 +28,8 @@ class LongLongTripDiv2 :
 	def Decide(self, D, T, B) :
 		answer = False
 
-		for i in range(1, T) :
-			prod = (B*i) + (i + T)
+		for i in range(0, T) :
+			prod = i + B * (T - i)
 
 			if prod == D :
 				answer = True
@@ -50,6 +50,10 @@ print("Expected: Impossible  -  Actual: " + result)
 
 # impossible
 result = longTrip.isAble(50, 100, 2)
+print("Expected: Impossible  -  Actual: " + result)
+
+# impossible
+result = longTrip.isAble(120, 10, 11)
 print("Expected: Impossible  -  Actual: " + result)
 
 # possible
