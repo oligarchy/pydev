@@ -20,12 +20,12 @@ class LongLongTripDiv2 :
 			return "Possible"
 		elif D == T :
 			return "Possible"
-		elif self.divModDecision(D, T, B):
+		elif self.Decide(D, T, B):
 			return "Possible"
 		else :
 			return "Impossible"
 
-	def divModDecision(self, D, T, B) :
+	def Decide(self, D, T, B) :
 		#dm = divmod(D, B)
 		# print repr(dm[0]) + '/' + repr(dm[1])
 		# loop through number of moves
