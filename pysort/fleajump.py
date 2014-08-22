@@ -7,14 +7,19 @@ import sys
 
 class LongLongTripDiv2 :
 	def isAble(self, D, T, B) :
-		if D < 1 or D > 10000000000000000000 :
-			raise ValueError('D is not within the correct bounds.')
+		# print("Testing: " + repr(D) + "/" + repr(T) + "/" + repr(B))
 
-		if T < 1 or T > 1000000000 :
-			raise ValueError('T is not within the correct bounds.')
+		if (D < 1) or (D > 100000000000000000) :
+			return "Impossible"
+			# raise ValueError('D is not within the correct bounds.')
 
-		if B < 1 or B > 1000000000 :
-			raise ValueError('T is not within the correct bounds.')
+		if (T < 1) or (T > 1000000000) :
+			return "Impossible"
+			# raise ValueError('T is not within the correct bounds.')
+
+		if (B < 1) or (B > 1000000000) :
+			return "Impossible"
+			# raise ValueError('T is not within the correct bounds.')
 
 		if T * B == D :
 			return "Possible"
@@ -36,6 +41,15 @@ class LongLongTripDiv2 :
 				break
 			
 		return answer
+
+	def DecideTomsVersion(self, D, T, B) :
+		answer = False
+
+		# x is the number of time C (1) is used
+		# y is the number times B is used
+		# x +y*B = D
+		# first solve for y, then plug in to:
+		# x + B*(T - x) = D
 
 # test cases
 longTrip = LongLongTripDiv2()
@@ -67,3 +81,15 @@ print("Expected: Possible  -  Actual: " + result)
 # possible
 result = longTrip.isAble(1000010000100001, 1100011, 1000000000)
 print("Expected: Possible  -  Actual: " + result)
+
+# impossible
+result = longTrip.isAble(561550235931654700, 770077091, 594689741)
+print("Expected: Impossible  -  Actual: " + result)
+
+# impossible
+result = longTrip.isAble(712848680829476700, 791137911, 583594796)
+print("Expected: Impossible  -  Actual: " + result)
+
+# impossible
+result = longTrip.isAble(782530047792645800, 810704991, 528005295)
+print("Expected: Impossible  -  Actual: " + result)
