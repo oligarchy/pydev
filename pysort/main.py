@@ -1,6 +1,7 @@
 import mergesort
-import quicksort
-import heap
+# import quicksort
+import quicksort20140820
+#import heap
 
 words = ['zebra', 'cat', 'banana', 'sultan', 'apple']
 sortedWords = []
@@ -8,15 +9,15 @@ sortedWords = []
 numbers = [3, 8, 11, 7, 4, 55, 22, 99]
 sortedNumbers = []
 
-qsortWords = quicksort.QuickSort()
-qsortNumbers = quicksort.QuickSort()
+sortedWords = quicksort20140820.Sort(words, 0, len(words) - 1)
+sortedNumbers = quicksort20140820.Sort(numbers, 0, len(numbers) - 1)
 
-print 'First we try to Quick sort numbers.'
-sortedNumbers = qsortNumbers.Sort(numbers, 0, len(numbers) - 1)
+#print 'First we try to Quick sort numbers.'
+#sortedNumbers = qsortNumbers.Sort(numbers, 0, len(numbers) - 1)
 
 
-print 'Then we try to quick sort words'
-sortedWords = qsortWords.Sort(words, 0, len(words) - 1)
+#print 'Then we try to quick sort words'
+#sortedWords = qsortWords.Sort(words, 0, len(words) - 1)
 
 #print 'First we try to Merge sort numbers.'
 #sortedNumbers = mergesort.Sort(numbers)
