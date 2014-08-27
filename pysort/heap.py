@@ -1,45 +1,62 @@
 """
 	Yes I know this is probably included in the standard libraries, but i'm learning.  ;P
 """
+class PyHeap :
 
-__listInternal = []
+	__listInternal = []
+	min = True
 
-def Insert(item) :
-	__listInternal.append(item)
+	def __init__(self, isMinHeap) :
+		self.__listInternal = [None]
+		self.min = isMinHeap
 
-def Delete(item) :
-	__listInternal.remove(item)
+	def Delete(self, item) :
+		self.__listInternal.remove(item)
 
-def DeleteByIndex(index) :
-	__listInternal.pop(index)l
+	def DeleteByIndex(self, index) :
+		self.__listInternal.pop(index)l
 
-def Add(item, parentIndex) :
-	if len(__listInternal) == 0 :
-		# we are making a root element
-		__listInternal.append(item)
-	elif len(__listInternal) > 0 :
-		node = GetNode(parentIndex)
-		if item >= node :
-			__listInternal.insert(2 * parentIndex + 2, item)
+	def Insert(self, item, parentIndex) :
+		if len(__listInternal) == 0 :
+			# we are making a root element
+			self.__listInternal.append(item)
+		elif len(self.__listInternal) > 0 :
+			node = self.GetNode(parentIndex)
+			if item >= node :
+				self.__listInternal.insert(2 * parentIndex + 2, item)
+			else :
+				self.__listInternal.insert(2 * parentIndex + 1, item)
+
+	def GetNode(self, index) :
+		return self.__listInteral[index]
+
+	def GetRight(self, index) :
+		rightIndex = 2 * index + 2
+
+		if rightIndex <= len(self.__listInternal) :
+			return self.__listInternal[2 * index + 2]
 		else :
-			__listInternal.insert(2 * parentIndex + 1, item)
+			# obviously this would already throw an index error, but i wanted to raise it
+			raise IndexError()
 
-def GetNode(index) :
-	return __listInteral[index]
+	def GetLeft(self, index) :
+		leftIndex = 2 * index + 1
 
-def GetRight(index) :
-	rightIndex = 2 * index + 2
+		if leftIndex >= 0 :
+			return __listInternal[2 * index + 1]
+		else :
+			raise IndexError()
 
-	if rightIndex <= len(__listInternal) :
-		return __listInternal[2*index+2]
-	else :
-		# obviously this would already throw an index error, but i wanted to raise it
-		raise IndexError()
+	def __trySwap(self, position) :
+		parentIndex = int(position / 2)
 
-def GetLeft(index) :
-	leftIndex = 2 * index + 1
+		if self.__inputList[parentIndex] < self.__inputList[position] :
+			self.__swap(parentIndex, position)
 
-	if leftIndex >= 0 :
-		return __listInternal[2*index+1]
-	else :
-		raise IndexError()
+			self.__trySwap(parentIndex)
+
+	def __swap(self, index1, index2) :
+		temp = self.__inputList[index1]
+		self.__inputList[index1] = self.__inputList[index2]
+		self.__inputList[index2] = temp
+
