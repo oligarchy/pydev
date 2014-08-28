@@ -10,11 +10,36 @@ class PyHeap :
 		self.__listInternal = [None]
 		self.min = isMinHeap
 
-	def Delete(self, item) :
-		self.__listInternal.remove(item)
-
 	def DeleteByIndex(self, index) :
-		self.__listInternal.pop(index)l
+		self.__listInternal.pop(index)
+
+	def __rebalance(self, index) :
+		# recurse and move everyone up one position, then tryswap
+		# this is our naive implementation first, we will refactor to be DFS recursion
+		self.__trySwap(index)
+
+		# recurse right side first
+		tempIndex = index
+		while True :
+			nextNode = self.__listInteral[2 * tempIndex + 1]
+			if nextNode == None :
+				self.__listInternal[tempIndex] = None
+				break
+			else :
+				self.__listInternal[tempIndex] = self.__listInternal[2 * tempIndex + 1]
+
+			tempIndex += 1
+
+		tempIndex = index
+		while True :
+			nextNode = self.__listInteral[2 * tempIndex]
+			if nextNode == None :
+				self.__listInternal[tempIndex] = None
+				break
+			else :
+				self.__listInternal[tempIndex] = self.__listInternal[2 * tempIndex]
+
+			tempIndex += 1
 
 	def Insert(self, item, parentIndex) :
 		if len(__listInternal) <= 1 :
