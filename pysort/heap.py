@@ -4,7 +4,7 @@
 class PyHeap :
 
 	__listInternal = []
-	min = True
+	__min = True
 
 	def __init__(self, isMinHeap) :
 		self.__listInternal = [None]
@@ -17,43 +17,48 @@ class PyHeap :
 		self.__listInternal.pop(index)l
 
 	def Insert(self, item, parentIndex) :
-		if len(__listInternal) == 0 :
+		if len(__listInternal) <= 1 :
 			# we are making a root element
 			self.__listInternal.append(item)
-		elif len(self.__listInternal) > 0 :
+		elif len(self.__listInternal) > 1 :
 			node = self.GetNode(parentIndex)
 			if item >= node :
-				self.__listInternal.insert(2 * parentIndex + 2, item)
-			else :
 				self.__listInternal.insert(2 * parentIndex + 1, item)
+			else :
+				self.__listInternal.insert(2 * parentIndex, item)
 
 	def GetNode(self, index) :
 		return self.__listInteral[index]
 
 	def GetRight(self, index) :
-		rightIndex = 2 * index + 2
+		rightIndex = 2 * index + 1
 
 		if rightIndex <= len(self.__listInternal) :
-			return self.__listInternal[2 * index + 2]
+			return self.__listInternal[2 * index + 1]
 		else :
-			# obviously this would already throw an index error, but i wanted to raise it
-			raise IndexError()
+			return None
 
 	def GetLeft(self, index) :
 		leftIndex = 2 * index + 1
 
 		if leftIndex >= 0 :
-			return __listInternal[2 * index + 1]
+			return __listInternal[2 * index]
 		else :
 			raise IndexError()
 
 	def __trySwap(self, position) :
 		parentIndex = int(position / 2)
 
-		if self.__inputList[parentIndex] < self.__inputList[position] :
-			self.__swap(parentIndex, position)
+		if self.__min : # min heap
+			if self.__inputList[parentIndex] < self.__inputList[position] :
+				self.__swap(parentIndex, position)
 
-			self.__trySwap(parentIndex)
+				self.__trySwap(parentIndex)
+		else : # max heap
+			if self.__inputList[parentIndex] > self.__inputList[position] :
+				self.__swap(parentIndex, position)
+
+				self.__trySwap(parentIndex)
 
 	def __swap(self, index1, index2) :
 		temp = self.__inputList[index1]
