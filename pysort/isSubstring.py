@@ -1,9 +1,6 @@
 
 # this will be our brute force implementation
 def NaiveIsSubstring(str1, str2) :
-
-	# base case validation.  if str1 is empty or longer, it can't be a substring
-
 	if (str1 == None) or (len(str1) == 0) :
 		return False
 
@@ -13,7 +10,6 @@ def NaiveIsSubstring(str1, str2) :
 	if len(str1) > len(str2) :
 		return False
 
-	# generate permutations
 	permutatations = [str1]
 	for i in range(1, len(str1)) :
 
