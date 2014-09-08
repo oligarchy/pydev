@@ -24,7 +24,8 @@ def Process(inputLists) :
 	# and incrementing each index, storing the smallest range.
 	# we use our index list to keep track of the last index on any particular list
 	currentList = 0
-	currentPerm = 0
+	currentIndex = 0
+
 	while True :
 		
 		if currentList >= len(filtered) :
@@ -33,8 +34,9 @@ def Process(inputLists) :
 		vectorRange = 0
 		vector = []
 	
-		for j in range(0, len(filtered)) :
+		for j in range(currentList, len(filtered)) :
 			vector.append(filtered[j][lastIndex[j]])
+			lastIndex[j] += 1
 
 		vectorRange = __findMax(vector) - __findMin(vector)
 		print "Vector : " + ", ".join([str(x) for x in vector])
@@ -45,9 +47,10 @@ def Process(inputLists) :
 			result = vector
 
 		if lastIndex[currentList] >= len(filtered[currentList]) - 1 :
+			currentIndex = 0
 			currentList += 1
 		else : 
-			lastIndex[currentList] += 1
+			currentIndex += 1
 
 	return result
 
