@@ -8,5 +8,7 @@ def Process(inputLists) :
 		print "i: " + repr(i)
 
 		for j in range(0, len(inputLists[i])) :
-			print "j: " + repr(j)
+			print "j: " + repr(inputLists[i][j])
 			heapq.heappush(heap, inputLists[i][j])
+
+	print "heap count: " + repr(len(heap))
