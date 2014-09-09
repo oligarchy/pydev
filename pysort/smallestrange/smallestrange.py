@@ -28,6 +28,7 @@ def Process(inputLists) :
 
 	while True :
 		
+		print "Current List: " + repr(currentList)
 		if currentList >= len(filtered) :
 			break
 
@@ -36,7 +37,11 @@ def Process(inputLists) :
 	
 		for j in range(currentList, len(filtered)) :
 			vector.append(filtered[j][lastIndex[j]])
-			lastIndex[j] += 1
+			
+			if lastIndex[j] >= len(filtered[j]) - 1 :
+				lastIndex[j] = 0
+			else :
+				lastIndex[j] += 1
 
 		vectorRange = __findMax(vector) - __findMin(vector)
 		print "Vector : " + ", ".join([str(x) for x in vector])
@@ -46,7 +51,9 @@ def Process(inputLists) :
 			smallestRange = vectorRange
 			result = vector
 
-		if lastIndex[currentList] >= len(filtered[currentList]) - 1 :
+		lastIndex[currentIndex] += 1
+
+		if lastIndex[currentList] >= len(filtered[currentList]) :
 			currentIndex = 0
 			currentList += 1
 		else : 
