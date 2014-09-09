@@ -23,6 +23,21 @@ def Process(inputLists) :
 	# now our setup is complete.  we iterate through, checking the range
 	# and incrementing each index, storing the smallest range.
 	# we use our index list to keep track of the last index on any particular list
+
+	allVectors = []
+	vector = []
+
+	for topItemIndex in filtered[0] :
+
+		iterationCount = 0
+		for listIndex in range(1, len(filtered)) :
+			for subItem in filtered[listIndex] :
+				
+
+
+
+
+
 	currentList = 0
 	currentIndex = 0
 
