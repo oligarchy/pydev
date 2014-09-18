@@ -6,6 +6,8 @@ def Process(inputLists) :
 	lastIndex = []
 	smallestRange = sys.maxint
 
+	currentList = 0
+
 	if len(inputLists) <= 0 :
 		return None
 
@@ -20,59 +22,59 @@ def Process(inputLists) :
 
 		lastIndex.append(0)
 
-	# now our setup is complete.  we iterate through, checking the range
-	# and incrementing each index, storing the smallest range.
-	# we use our index list to keep track of the last index on any particular list
-
-	allVectors = []
-	vector = []
-
-	for topItemIndex in filtered[0] :
-
-		iterationCount = 0
-		for listIndex in range(1, len(filtered)) :
-			for subItem in filtered[listIndex] :
-				
-
-
-
-
-
-	currentList = 0
-	currentIndex = 0
+	iterCount = 0
 
 	while True :
-		
-		print "Current List: " + repr(currentList)
-		if currentList >= len(filtered) :
+
+		for i in filtered :
+			currentVector.append(filtered[i][lastIndex[i]])
+			lastIndex[i] += 1
+
+			if lastIndex[i] > len(filtered[i]) :
+				lastIndex[i] = 0
+
+			vectorRange = __findMax(vector) - __findMin(vector)
+
+			if vectorRange < smallestRange :
+				smallestRange = vectorRange
+
+
+				
+		if iterCount > 1000 :
 			break
 
-		vectorRange = 0
-		vector = []
+	# while True :
+		
+	# 	print "Current List: " + repr(currentList)
+	# 	if currentList >= len(filtered) :
+	# 		break
+
+	# 	vectorRange = 0
+	# 	vector = []
 	
-		for j in range(currentList, len(filtered)) :
-			vector.append(filtered[j][lastIndex[j]])
+	# 	for j in range(currentList, len(filtered)) :
+	# 		vector.append(filtered[j][lastIndex[j]])
 			
-			if lastIndex[j] >= len(filtered[j]) - 1 :
-				lastIndex[j] = 0
-			else :
-				lastIndex[j] += 1
+	# 		if lastIndex[j] >= len(filtered[j]) - 1 :
+	# 			lastIndex[j] = 0
+	# 		else :
+	# 			lastIndex[j] += 1
 
-		vectorRange = __findMax(vector) - __findMin(vector)
-		print "Vector : " + ", ".join([str(x) for x in vector])
-		print "Vector Range: " + repr(vectorRange)
+	# 	vectorRange = __findMax(vector) - __findMin(vector)
+	# 	print "Vector : " + ", ".join([str(x) for x in vector])
+	# 	print "Vector Range: " + repr(vectorRange)
 
-		if vectorRange < smallestRange :
-			smallestRange = vectorRange
-			result = vector
+	# 	if vectorRange < smallestRange :
+	# 		smallestRange = vectorRange
+	# 		result = vector
 
-		lastIndex[currentIndex] += 1
+	# 	lastIndex[currentIndex] += 1
 
-		if lastIndex[currentList] >= len(filtered[currentList]) :
-			currentIndex = 0
-			currentList += 1
-		else : 
-			currentIndex += 1
+	# 	if lastIndex[currentList] >= len(filtered[currentList]) :
+	# 		currentIndex = 0
+	# 		currentList += 1
+	# 	else : 
+	# 		currentIndex += 1
 
 	return result
 
